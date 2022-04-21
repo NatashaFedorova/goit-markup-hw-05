@@ -14,9 +14,11 @@
   --bg-accent-button-color: #188ce8;
   --bg-first-hero: rgba(47, 48, 58, 0.4);
   --bg-last-hero: #c4c4c4;
+  --bg-portfilio-example-thumb: rgba(33, 150, 243, 0.9);
   --soc-icon-color-main: #afb1b8;
   --soc-icon-color-footer: #ffffff;
   --soc-bg-footer: rgba(255, 255, 255, 0.1);
+  --activity-bg-text-thumb: rgba(47, 48, 58, 0.8);
   --main-font-family: 'Roboto', sans-serif;
   --logo-font-family: 'Raleway', sans-serif;
   --main-gap: 30px;
@@ -153,8 +155,19 @@ body {
   fill: currentColor;
   margin-right: 10px;
 }
-.link.active {
+.active {
+  position: relative;
   color: var(--accent-color);
+}
+.active::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 4px;
+  border-radius: 2px;
+  background-color: var(--bg-accent-color);
 }
 .link-nav:hover,
 .link-nav:focus,
@@ -239,14 +252,34 @@ body {
   background-color: var(--bg-light-color);
 }
 /*==================activity===================== */
+.title-activity {
+  margin-bottom: 50px;
+}
 .list-activity {
   display: flex;
 }
 .item-activity:not(:last-child) {
   margin-right: var(--main-gap);
 }
-.title-activity {
-  margin-bottom: 50px;
+.activity-img-thumb {
+  position: relative;
+}
+.activity-text-thumb {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  min-height: 70px;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+  color: var(--light-color);
+  background: var(--activity-bg-text-thumb);
 }
 /*==================team===================== */
 .team {
@@ -394,6 +427,39 @@ body {
   border-bottom: 1px solid var(--border-card-color);
   border-left: 1px solid var(--border-card-color);
 }
+.example-card-thumb {
+  position: relative;
+}
+.example-card-thumb::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  opacity: 0;
+
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+
+  background-color: var(--bg-portfilio-example-thumb);
+}
+.example-text-thumb {
+  position: absolute;
+  top: 63px;
+  left: 24px;
+  right: 24px;
+  bottom: 63px;
+  opacity: 0;
+
+  font-size: 18px;
+  line-height: 1.56;
+  color: var(--light-color);
+}
+.example-card-thumb:hover::before,
+.example-card-thumb:hover .example-text-thumb {
+  opacity: 1;
+}
 .title-example {
   margin-bottom: 4px;
   font-size: 18px;
@@ -407,8 +473,8 @@ body {
 .link-example {
   display: block;
 }
-.link-example:hover,
-.link-example:focus {
+.item-example:hover,
+.item-example:focus {
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
     1px 4px 6px rgba(0, 0, 0, 0.16);
 }
