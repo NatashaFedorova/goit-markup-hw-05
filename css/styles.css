@@ -19,6 +19,7 @@
   --soc-icon-color-footer: #ffffff;
   --soc-bg-footer: rgba(255, 255, 255, 0.1);
   --activity-bg-text-thumb: rgba(47, 48, 58, 0.8);
+  --backdrop-color: rgba(0, 0, 0, 0.2);
   --main-font-family: 'Roboto', sans-serif;
   --logo-font-family: 'Raleway', sans-serif;
   --main-gap: 30px;
@@ -145,6 +146,8 @@ body {
   font-size: 14px;
   line-height: 1.14;
   letter-spacing: 0.02em;
+
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .link-contacts {
   display: flex;
@@ -163,7 +166,7 @@ body {
   content: '';
   position: absolute;
   left: 0;
-  bottom: -1%;
+  bottom: -1px;
   width: 100%;
   height: 4px;
   border-radius: 2px;
@@ -208,7 +211,7 @@ body {
   display: block;
   height: 50px;
   min-width: 200px;
-  border-color: var(--bg-accent-color);
+  border: 0;
   background-color: var(--bg-accent-color);
   color: var(--light-color);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
@@ -218,11 +221,60 @@ body {
   letter-spacing: 0.06em;
   margin-left: auto;
   margin-right: auto;
+
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .hero-button:hover,
 .hero-button:focus {
-  border-color: var(--bg-accent-color);
   background-color: var(--bg-accent-button-color);
+}
+.backdrop.is-hidden {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+
+  transform: scale(1);
+}
+.backdrop {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background-color: var(--backdrop-color);
+
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.modal {
+  position: relative;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 528px;
+  min-height: 581px;
+  border-radius: 4px;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+
+  background-color: var(--bg-main-color);
+}
+.button-close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+
+  background-color: #ffffff;
 }
 /*==================features===================== */
 .features.section {
@@ -331,6 +383,9 @@ body {
   height: 44px;
   border-radius: 50%;
   fill: var(--soc-icon-color-main);
+
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .team-soc-item:not(:last-child) {
   margin-right: 10px;
@@ -364,6 +419,8 @@ body {
   border: 1px solid var(--soc-icon-color-main);
   border-radius: 4px;
   fill: var(--soc-icon-color-main);
+
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1), border 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .link-item-clients:hover,
 .link-item-clients:focus {
@@ -402,11 +459,15 @@ body {
   font-weight: 500;
   line-height: 1.63;
   letter-spacing: 0.03em;
+
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .filter .button:hover,
 .filter .button:focus {
-  background-color: var(--bg-accent-color);
   color: var(--light-color);
+  background-color: var(--bg-accent-color);
   box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.08),
     0px 2px 2px rgba(0, 0, 0, 0.12);
 }
@@ -420,6 +481,8 @@ body {
   flex-basis: calc(100% / 3 - var(--main-gap));
   margin-right: var(--main-gap);
   margin-bottom: var(--main-gap);
+
+  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .example-card-content {
   padding: 20px 24px;
@@ -443,6 +506,8 @@ body {
   height: 100%;
 
   background-color: var(--bg-portfilio-example-thumb);
+
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .example-text-thumb {
   position: absolute;
@@ -455,6 +520,8 @@ body {
   font-size: 18px;
   line-height: 1.56;
   color: var(--light-color);
+
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .example-card-thumb:hover::before,
 .example-card-thumb:hover .example-text-thumb {
@@ -538,6 +605,9 @@ body {
   border-radius: 50%;
   fill: var(--soc-icon-color-footer);
   background-color: var(--soc-bg-footer);
+
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    background-color color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .footer-soc-link:hover {
   fill: var(--bg-main-color);
