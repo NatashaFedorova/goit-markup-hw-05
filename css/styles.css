@@ -515,7 +515,7 @@ body {
   left: 24px;
   right: 24px;
   bottom: 63px;
-  transform: translateY(100%);
+  transform: translateY(calc(100% + 63px));
   font-size: 18px;
   line-height: 1.56;
   color: var(--light-color);
